@@ -1,6 +1,6 @@
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 
-interface ProductProviderProps {
+export interface ProductProviderProps {
   children: ReactNode;
 }
 
