@@ -1,32 +1,16 @@
-# React + TypeScript + Vite
+# FinzyStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FinzyStore is an e-commerce web application built with React, TypeScript, and Tailwind CSS. It allows users to browse products, add them to their cart, and manage their shopping cart.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Product listing
+- Product details
+- Add to cart functionality
+- Cart management (increment, decrement, and remove items)
+- Sidebar for cart summary
+- Responsive design
 
-## Expanding the ESLint configuration
+## Why I Built This
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-used typescript which took longer but i learnt a lot {benefitsof ts}
+I built FinzyStore to showcase my skills in writing clean TypeScript code. This project emphasizes a minimalistic design approach, focusing on simplicity and user experience.
