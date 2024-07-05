@@ -11,6 +11,7 @@ export interface Product {
   description: string;
   category: string;
   image: string;
+  amount?: number;
 }
 
 export const ProductContext = createContext<Product[] | null>(null);

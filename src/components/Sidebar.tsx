@@ -1,7 +1,9 @@
-import { ArrowBigRight, Trash } from "lucide-react";
-import CartItem from "./CartItem";
+import { ArrowBigRight, Trash2 } from "lucide-react";
 import { FC, useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
+import { Product } from "../contexts/ProductContext";
 import { SidebarContext } from "../contexts/SidebarContext";
+import CartItem from "./CartItem";
 
 const Sidebar: FC = () => {
   const sidebarContext = useContext(SidebarContext);
@@ -9,6 +11,8 @@ const Sidebar: FC = () => {
     return null;
   }
   const { isOpen, handleClose } = sidebarContext;
+
+  const { cart, clearCart, total } = useContext(CartContext);
 
   return (
     <div
@@ -25,7 +29,25 @@ const Sidebar: FC = () => {
           <ArrowBigRight className="text-2xl" />
         </div>
       </div>
-      <CartItem /> <Trash />
+      <div className="flex flex-col gap-y-2 h-[520px] lg:h-[640px] overflow-y-auto overflow-x-hidden border-b">
+        {cart.map((item: Product) => (
+          <CartItem key={item.id} item={item} />
+        ))}
+      </div>
+
+      <div className="flex flex-col gap-y-3 py-4 mt-4">
+        <div className="flex w-full justify-between items-center">
+          <div className="uppercase font-semibold">
+            <span className="mr-2">Total:</span>$ {parseFloat(total).toFixed(2)}
+          </div>
+          <div
+            className="cursor-pointer py-4 bg-red-500 text-white h-12 w-12 flex justify-center items-center text-xl"
+            onClick={() => clearCart()}
+          >
+            <Trash2 />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
