@@ -10,59 +10,32 @@ interface CartProviderProps {
 const CartProvider: FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Product[] | []>([]);
   const [itemCount, setItemCount] = useState<number>(0);
-
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     const total = cart.reduce((acc, cur) => {
-      return acc + cur.price * cur.amount!;
+      return acc + cur.price * (cur.amount || 1);
     }, 0);
     setTotal(total);
   });
 
   useEffect(() => {
-    const amount = cart.reduce((acc, cur) => acc + cur.amount!, 0);
+    const amount = cart.reduce((acc, cur) => acc + (cur.amount || 1), 0);
     setItemCount(amount);
   }, [cart]);
 
-  // const addToCart = (id: number, product: Product) => {
-  //   const newItem = { ...product, amount: 1 };
-
-  //   const cartItem = cart.find((item) => item.id === id);
-
-  //   if (cartItem) {
-  //     const newCart = [...cart].map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, amount: item.amount! + 1 };
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-
-  //     setCart(newCart);
-  //   } else {
-  //     console.log("fire");
-  //     setCart([...cart, newItem]);
-  //   }
-  // };
-
   const addToCart = (id: number, product: Product) => {
-    const newItem = { ...product, amount: 1 };
-
     const cartItem = cart.find((item) => item.id === id);
 
     if (cartItem) {
-      const newCart = cart.map((item) => {
-        if (item.id === id) {
-          return { ...item, amount: item.amount! + 1 };
-        } else {
-          return item;
-        }
-      });
-
-      setCart(newCart);
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === id ? { ...item, amount: (item.amount || 1) + 1 } : item
+        )
+      );
     } else {
-      setCart([...cart, newItem]);
+      const newItem = { ...product, amount: 1 };
+      setCart((prevCart) => [...prevCart, newItem]);
     }
   };
 
