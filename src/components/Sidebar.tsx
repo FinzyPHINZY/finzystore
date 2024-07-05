@@ -4,6 +4,7 @@ import { CartContext } from "../contexts/CartContext";
 import { Product } from "../contexts/ProductContext";
 import { SidebarContext } from "../contexts/SidebarContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Sidebar: FC = () => {
   const sidebarContext = useContext(SidebarContext);
@@ -47,6 +48,19 @@ const Sidebar: FC = () => {
             <Trash2 />
           </div>
         </div>
+        <Link
+          to={"/"}
+          className="bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-medium"
+        >
+          View Cart
+        </Link>
+
+        <Link
+          to="/"
+          className="bg-primary flex p-4 justify-center items-center text-white w-full font-medium"
+        >
+          Checkout
+        </Link>
       </div>
     </div>
   );
