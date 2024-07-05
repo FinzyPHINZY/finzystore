@@ -25,15 +25,36 @@ const CartProvider: FC<CartProviderProps> = ({ children }) => {
     setItemCount(amount);
   }, [cart]);
 
+  // const addToCart = (id: number, product: Product) => {
+  //   const newItem = { ...product, amount: 1 };
+
+  //   const cartItem = cart.find((item) => item.id === id);
+
+  //   if (cartItem) {
+  //     const newCart = [...cart].map((item) => {
+  //       if (item.id === id) {
+  //         return { ...item, amount: item.amount! + 1 };
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+
+  //     setCart(newCart);
+  //   } else {
+  //     console.log("fire");
+  //     setCart([...cart, newItem]);
+  //   }
+  // };
+
   const addToCart = (id: number, product: Product) => {
     const newItem = { ...product, amount: 1 };
 
     const cartItem = cart.find((item) => item.id === id);
 
     if (cartItem) {
-      const newCart = [...cart].map((item) => {
+      const newCart = cart.map((item) => {
         if (item.id === id) {
-          return { ...item, amount: cartItem.amount! + 1 };
+          return { ...item, amount: item.amount! + 1 };
         } else {
           return item;
         }

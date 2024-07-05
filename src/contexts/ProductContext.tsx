@@ -14,10 +14,10 @@ export interface Product {
   amount?: number;
 }
 
-export const ProductContext = createContext<Product[] | null>(null);
+export const ProductContext = createContext<Product[] | null>([]);
 
 const ProductProvider: FC<ProductProviderProps> = ({ children }) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
